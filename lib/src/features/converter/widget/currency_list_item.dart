@@ -20,7 +20,7 @@ class CurrencyListItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       width: double.infinity,
-      height: 85,
+      height: 90,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -42,6 +42,7 @@ class CurrencyListItem extends StatelessWidget {
               ),
               CustomText(
                 text: symbolCode,
+                fontWeight: FontWeight.w600,
               ),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.end,

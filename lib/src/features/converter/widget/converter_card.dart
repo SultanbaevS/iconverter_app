@@ -29,7 +29,7 @@ class _ConverterCardState extends State<ConverterCard> {
   Widget build(BuildContext context) {
     return SizedBox(
       width: 320.w,
-      height: 260.h,
+      height: 240.h,
       child: Card(
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -56,9 +56,9 @@ class _ConverterCardState extends State<ConverterCard> {
                   );
                 },
               ),
-              10.verticalSpace,
               5.verticalSpace,
               const StackDivider(),
+              5.verticalSpace,
               const CustomText(
                 text: 'Конвертируемая сумма',
               ),
@@ -73,7 +73,7 @@ class _ConverterCardState extends State<ConverterCard> {
                   );
                 },
               ),
-              10.verticalSpace,
+              // 10.verticalSpace,
             ],
           ),
         ),

@@ -14,9 +14,10 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
+      bottom: false,
       child: SizedBox(
-        width: double.infinity,
-        height: double.infinity,
+        width: MediaQuery.sizeOf(context).width,
+        height: MediaQuery.sizeOf(context).height,
         child: DecoratedBox(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -33,40 +34,38 @@ class _HomePageState extends State<HomePage> {
             },
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
-              child: SizedBox(
-                height: MediaQuery.sizeOf(context).height,
-                width: MediaQuery.sizeOf(context).width,
-                child: Padding(
-                  padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 0.h),
-                  child: Column(
-                    children: [
-                      const TopText(),
-                      10.verticalSpace,
-                      const ConverterCard(),
-                      10.verticalSpace,
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const CustomText(
-                              text: 'Ориентировочный обменный курс'),
-                          BlocBuilder<ConverterBloc, ConverterState>(
-                            buildWhen: (previous, current) =>
-                                previous.first != current.first ||
-                                previous.second != current.second,
-                            builder: (context, state) {
-                              return CustomText(
-                                text: state.getViewResult(),
-                                fontWeight: FontWeight.bold,
-                              );
-                            },
-                          ),
-                        ],
-                      ),
-                      10.verticalSpace,
-                      const CurrenciesList(),
-                    ],
-                  ),
+              child: Padding(
+                padding: EdgeInsets.only(left: 20.w, right: 20.w, top: 0.h),
+                child: Column(
+                  children: [
+                    const TopText(),
+                    10.verticalSpace,
+                    const ConverterCard(),
+                    10.verticalSpace,
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        const CustomText(text: 'Ориентировочный обменный курс'),
+                        BlocBuilder<ConverterBloc, ConverterState>(
+                          buildWhen: (previous, current) =>
+                              previous.first != current.first ||
+                              previous.second != current.second,
+                          builder: (context, state) {
+                            return CustomText(
+                              text: state.getViewResult(),
+                              fontWeight: FontWeight.bold,
+                            );
+                          },
+                        ),
+                      ],
+                    ),
+                    10.verticalSpace,
+                    SizedBox(
+                      height: 275.h,
+                      child: const CurrenciesList(),
+                    ),
+                  ],
                 ),
               ),
             ),
